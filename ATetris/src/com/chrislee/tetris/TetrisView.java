@@ -14,6 +14,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class TetrisView extends View implements Runnable{
@@ -247,7 +248,52 @@ public class TetrisView extends View implements Runnable{
 	{
 		return mCourt.isGameOver();
 	}
-
+	
+	public boolean onTouchEvent(MotionEvent event)
+	{
+		float x=event.getX();
+		float y=event.getY();
+		if(event.getAction()==MotionEvent.ACTION_DOWN){		
+			if(mGamestate == STATE_PLAY)
+			{
+				if(!mIsPaused)
+				{
+					if(mCurrentTile.isPointInTile(x, y)){
+						rotate();
+						mMPlayer.playMoveVoice();
+					}
+					else if(x<(Court.COURT_WIDTH*Court.BLOCK_WIDTH)/2 && y<(Court.COURT_HEIGHT-Court.ABOVE_VISIBLE_TOP)*Court.BLOCK_HEIGHT){
+						moveLeft();
+						mMPlayer.playMoveVoice();
+					}
+					else if(x>(Court.COURT_WIDTH*Court.BLOCK_WIDTH)/2 && 
+							x<Court.COURT_WIDTH*Court.BLOCK_WIDTH &&
+							y<(Court.COURT_HEIGHT-Court.ABOVE_VISIBLE_TOP)*Court.BLOCK_HEIGHT){
+						moveRight();
+						mMPlayer.playMoveVoice();
+					}
+					else if(x<Court.COURT_WIDTH*Court.BLOCK_WIDTH &&
+							y>(Court.COURT_HEIGHT-Court.ABOVE_VISIBLE_TOP)*Court.BLOCK_HEIGHT){
+						fastDrop();
+						mMPlayer.playMoveVoice();
+					}
+					mMPlayer.playMoveVoice();
+				}
+			}
+		}
+//		else if(event.getAction()==MotionEvent.){
+//			if(mGamestate == STATE_PLAY)
+//			{
+//				if(!mIsPaused)
+//				{
+//					moveRight();
+//					mMPlayer.playMoveVoice();
+//				}
+//			}
+//		}
+		return super.onTouchEvent(event);
+	}
+	
 	public boolean onKeyDown(int keyCode,KeyEvent event)
 	{
 		switch(keyCode)
@@ -455,7 +501,7 @@ public class TetrisView extends View implements Runnable{
 	private void paintSpeed(Canvas canvas)
 	{
 		mPaint.setColor(Color.BLUE);
-		canvas.drawText("等级:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(9),mPaint);
+		canvas.drawText("绛夌骇:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(9),mPaint);
 		mPaint.setColor(Color.RED);
 		canvas.drawText(String.valueOf(mSpeed),getBlockDistance(Court.COURT_WIDTH)+ 2*getRightMarginToCourt(), getBlockDistance(11),mPaint);
 	}
@@ -463,7 +509,7 @@ public class TetrisView extends View implements Runnable{
 	private void paintScore(Canvas canvas)
 	{
 		mPaint.setColor(Color.BLUE);
-		canvas.drawText("得分:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(13),mPaint);
+		canvas.drawText("寰楀垎:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(13),mPaint);
 		mPaint.setColor(Color.RED);
 		canvas.drawText(String.valueOf(mScore),getBlockDistance(Court.COURT_WIDTH)+ 2*getRightMarginToCourt(), getBlockDistance(15),mPaint);
 	}
@@ -471,7 +517,7 @@ public class TetrisView extends View implements Runnable{
 	private void paintDeLine(Canvas canvas)
 	{
 		mPaint.setColor(Color.BLUE);
-		canvas.drawText("消去行数:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(17),mPaint);
+		canvas.drawText("娑堝幓琛屾暟:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(17),mPaint);
 		mPaint.setColor(Color.RED);
 		canvas.drawText(String.valueOf(mDeLine),getBlockDistance(Court.COURT_WIDTH)+2*getRightMarginToCourt(), getBlockDistance(19),mPaint);
 	}

@@ -13,7 +13,7 @@ import android.view.Window;
 public class ActivityGame extends Activity {
 
 	private static final String TAG = "ActivityGame";
-	TetrisView mTetrisView = null;
+	private TetrisView mTetrisView = null;
 	
 //	private static final int DIALOG_ID = 1;
 	
@@ -78,7 +78,7 @@ public class ActivityGame extends Activity {
 //		{
 //			Builder builder = new AlertDialog.Builder(this);
 //			builder.setIcon(R.drawable.icon);
-//			builder.setTitle("¹§Ï²½øÈëÇ°ÈýÃû");
+//			builder.setTitle("ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½");
 //			return builder.create();
 //		}
 //		return null;

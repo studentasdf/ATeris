@@ -7,7 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
-// ResourceStore是一个Singleton
+// ResourceStore锟斤拷一锟斤拷Singleton
 public class ResourceStore {
 	private static Bitmap mBackground = null;
 	private static Bitmap[] mBlocks = null;
@@ -53,7 +53,7 @@ public class ResourceStore {
 			for(int i = 0;i<8;i++)
 			{
 			//			loadImage(R.drawable.block0+i,mBlocks[i]);
-				mBlocks[i] = createImage(mR.getDrawable(R.drawable.block0+i),Court.BLOCK_WIDTH,Court.BLOCK_WIDTH);
+				mBlocks[i] = createImage(mR.getDrawable(R.drawable.block0+i),Court.BLOCK_WIDTH,Court.BLOCK_HEIGHT);
 			}
 		}
 	}

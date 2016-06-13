@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string name="hello">Hello World, ActivityMain!</string>
     <string name="app_name">ATetris</string>
+    <string name="continuePreviousGame">继续上次游戏</string>
+    <string name="newGame">新游戏</string>
+    <string name="help">帮助</string>
+    <string name="rank">排行榜</string>
+    <string name="level">选择难度</string>
+    <string name="speed">1</string>
+    <string name="voice">声音开关:</string>
+    <string name="exit">退出</string>
 </resources>

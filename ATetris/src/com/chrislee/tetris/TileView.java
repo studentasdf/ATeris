@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 
-// tileÊÇÖ¸ÈçÌõÐÎ£¬·½ÐÎ£¬ZÐÎµÄ×é¼þ
+// tileï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½ï¿½ï¿½ï¿½Î£ï¿½Zï¿½Îµï¿½ï¿½ï¿½ï¿½
 
 public class TileView{
 	int[][] mTile = new int[4][4];
@@ -35,10 +35,12 @@ public class TileView{
 	
 	private void init()
 	{
-		mRand = new Random();
-		mShape = Math.abs(mRand.nextInt() % 28);
+		mRand = new Random(System.currentTimeMillis());
+//		mShape = Math.abs(mRand.nextInt() % 28);
+		mShape = mRand.nextInt(28);
 		
-		mColor = Math.abs(mRand.nextInt() % 8) + 1;
+//		mColor = Math.abs(mRand.nextInt() % 8) + 1;
+		mColor = mRand.nextInt(8)+1;
 		
 		if(mTile == null)
 		{
@@ -60,7 +62,7 @@ public class TileView{
 		int tempShape;
 		int[][] tempTile = new int[4][4];
 
-		// ÏòÓÒ×ª
+		// ï¿½ï¿½ï¿½ï¿½×ª
 		tempShape = mShape;
 		if (tempShape % 4 > 0) {
 			tempShape--;
@@ -223,7 +225,7 @@ public class TileView{
 
 	public void paintTile(Canvas canvas)
 	{
-		ResourceStore rs = new ResourceStore(mContext);
+//		ResourceStore rs = new ResourceStore(mContext);
 		Paint paint = new Paint();
 		for (int i = 0; i < 4; i++)
 		{
@@ -233,7 +235,7 @@ public class TileView{
 				{
 					canvas.drawBitmap(mRs.getBlock(mColor -1), Court.BEGIN_DRAW_X
 							+ (i + mOffsetX) * Court.BLOCK_WIDTH, Court.BEGIN_DRAW_Y
-							+ (j + mOffsetY) * Court.BLOCK_WIDTH, paint);
+							+ (j + mOffsetY) * Court.BLOCK_HEIGHT, paint);
 				}
 			}
 		}
@@ -261,4 +263,11 @@ public class TileView{
 		mShape = shape;
 	}
 	
+	public boolean isPointInTile(float x, float y)
+	{
+		if(x>mOffsetX*Court.BLOCK_WIDTH && x<(mOffsetX+4)*Court.BLOCK_WIDTH &&
+				y<mOffsetY*Court.BLOCK_HEIGHT && y>(mOffsetY-4)*Court.BLOCK_HEIGHT)
+			return true;
+		return false;
+	}
 }
