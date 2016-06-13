@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation = "vertical"
+  android:background = "@drawable/tetris"
+  >
+  <TextView
+  android:layout_width = "fill_parent"
+  android:layout_height = "wrap_content"
+  android:textSize = "20px"
+  android:textColor = "#ff000000"
+  android:background = "#a09090ff"
+  android:text = "方向键UP:旋转"
+  />
+   <TextView
+  android:layout_width = "fill_parent"
+  android:layout_height = "wrap_content"
+  android:textSize = "20px"
+  android:textColor = "#ff000000"
+  android:background = "#a09090ff"
+  android:text = "方向键DOWN：加速下落"
+  />
+   <TextView
+  android:layout_width = "fill_parent"
+  android:layout_height = "wrap_content"
+  android:textSize = "20px"
+  android:textColor = "#ff000000"
+  android:background = "#a09090ff"
+  android:text = "方向键LELF：向左 "
+  />
+   <TextView
+  android:layout_width = "fill_parent"
+  android:layout_height = "wrap_content"
+  android:textSize = "20px"
+  android:textColor = "#ff000000"
+  android:background = "#a09090ff"
+  android:text = "CENTER或ENTER键:下落到低"
+  android:layout_weight = "1"
+  />
+</LinearLayout>

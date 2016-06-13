@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation = "vertical"
+  android:background = "@drawable/tetris"
+  >
+  
+   <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+  android:layout_marginTop = "50px"
+ >  
+ <Button 
+  android:id = "@+id/bt_continue"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content" 
+  android:text = "继续上次游戏"
+  android:layout_centerHorizontal= "true"
+  />
+  </RelativeLayout>
+  
+   <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ >  
+   <Button 
+  android:id = "@+id/bt_new"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content" 
+  android:text = "新游戏"
+  android:layout_centerHorizontal= "true"
+  />
+  </RelativeLayout>
+  
+  <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ >  
+  <Button
+  android:id = "@+id/bt_help"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content"
+  android:text = "帮助"
+ android:layout_centerHorizontal= "true"
+  />
+ </RelativeLayout>
+  
+  <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ >  
+ 
+  <Button
+   android:id = "@+id/bt_rank"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content"
+  android:text = "排行榜"
+  android:layout_centerHorizontal= "true"
+  />
+ </RelativeLayout>
+  
+ <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ >  
+  <TextView
+   android:id = "@+id/tv_level"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content"
+  android:text = "选择难度"
+  android:textColor = "#ee000000"
+  android:layout_centerHorizontal= "true"
+  />
+  </RelativeLayout>
+ 
+ 
+ 
+  <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ >  
+  <TextView
+  android:id = "@+id/tv_speed"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content"
+  android:layout_centerHorizontal = "true"
+  android:text = "1"
+  android:textSize = "20px"
+  android:textColor = "#ffffff00"
+  android:background = "#6600ee00"
+  />
+  
+  <Button
+  android:id = "@+id/bt_pre"
+  android:layout_width = "50px"
+  android:layout_height = "wrap_content"
+  android:layout_toLeftOf = "@id/tv_speed"
+  android:text = "&lt;&lt;"
+  android:textSize = "20px"
+  android:background = "#70dfdfdf"
+  android:textColorHighlight = "#ffff0000"
+  android:layout_marginRight = "10px"
+  />
+  
+  <Button
+  android:id = "@+id/bt_next"
+  android:layout_width = "50px"
+  android:layout_height = "wrap_content"
+  android:layout_toRightOf = "@id/tv_speed"
+  android:text = ">>"
+  android:textSize = "20px"
+  android:background = "#80cfcfcf"
+   android:layout_marginLeft = "10px"
+  />
+  
+</RelativeLayout>
+
+<RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ android:layout_marginTop = "15px"
+ >  
+ <CheckBox
+  android:id = "@+id/cb_voice"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content"
+  android:checked = "true"
+  android:layout_centerHorizontal = "true"
+  />
+  <TextView
+   android:id = "@+id/tv_voice"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content"
+  android:text = "声音开关:"
+  android:textColor = "#ee000000"
+  android:layout_toLeftOf = "@id/cb_voice"
+  />
+  </RelativeLayout>
+  
+  <RelativeLayout
+ android:layout_width = "fill_parent"
+ android:layout_height = "wrap_content"
+ android:layout_marginTop = "15px"
+ > 
+ <Button 
+  android:id = "@+id/bt_exit"
+  android:layout_width = "wrap_content"
+  android:layout_height = "wrap_content" 
+  android:text = "退出"
+  android:layout_centerHorizontal= "true"
+  />
+ </RelativeLayout> 
+
+</LinearLayout>
