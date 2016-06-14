@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -38,7 +40,12 @@ public class ActivityMain extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
+        		WindowManager.LayoutParams.FLAG_FULLSCREEN);//»•µÙ–≈œ¢¿∏
         setContentView(R.layout.menu);
+//        RelativeLayout.LayoutParams lp=(RelativeLayout.LayoutParams)findViewById(R.id.rlayout);
+//        lp.setMargins(left, top, right, bottom);
         
         btNewgame = (Button)findViewById(R.id.bt_new);
         btContinue = (Button)findViewById(R.id.bt_continue);
@@ -49,6 +56,8 @@ public class ActivityMain extends Activity {
         btExit = (Button)findViewById(R.id.bt_exit);
         
         tvLevel = (TextView)findViewById(R.id.tv_speed);
+//        tvLevel.setTextScaleX(TetrisView.SCALE);
+        tvLevel.setTextSize(TetrisView.SCALE*10);
        
         cbVoice = (CheckBox)findViewById(R.id.cb_voice);
         

@@ -12,14 +12,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 
 public class TetrisView extends View implements Runnable{
-	final static int SCREEN_WIDTH = 320;
-	final static int SCREEN_HEIGHT = 455;
+	
+	static int SCREEN_WIDTH = 320;//*3.375
+	static int SCREEN_HEIGHT = 455;//*4.220
+	static float SCALE = 3.375f;
 	
 	final int STATE_MENU   = 0;
 	final int STATE_PLAY   = 1;
@@ -50,7 +52,7 @@ public class TetrisView extends View implements Runnable{
 	int mSpeed = 1;
 	int mDeLine = 0;
 	
-	boolean mIsCombo = false; //
+	boolean mIsCombo = false; //combo to the bottom
 	boolean mIsPaused = false;
 	boolean mIsVoice = true;
 	
@@ -133,7 +135,7 @@ public class TetrisView extends View implements Runnable{
 		default:;
 		}
 	}
-	
+	//unused
 	public void startGame()
 	{
 		mGamestate = STATE_PLAY;
@@ -473,7 +475,7 @@ public class TetrisView extends View implements Runnable{
 		mCurrentTile.paintTile(canvas);
 		//mNextTile.paintTile(canvas);
 		
-		mPaint.setTextSize(20);
+		mPaint.setTextSize(20*SCALE);
 		paintNextTile(canvas);
 		paintSpeed(canvas);
 		paintScore(canvas);
@@ -501,7 +503,7 @@ public class TetrisView extends View implements Runnable{
 	private void paintSpeed(Canvas canvas)
 	{
 		mPaint.setColor(Color.BLUE);
-		canvas.drawText("绛夌骇:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(9),mPaint);
+		canvas.drawText("等级:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(9),mPaint);
 		mPaint.setColor(Color.RED);
 		canvas.drawText(String.valueOf(mSpeed),getBlockDistance(Court.COURT_WIDTH)+ 2*getRightMarginToCourt(), getBlockDistance(11),mPaint);
 	}
@@ -509,7 +511,7 @@ public class TetrisView extends View implements Runnable{
 	private void paintScore(Canvas canvas)
 	{
 		mPaint.setColor(Color.BLUE);
-		canvas.drawText("寰楀垎:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(13),mPaint);
+		canvas.drawText("得分:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(13),mPaint);
 		mPaint.setColor(Color.RED);
 		canvas.drawText(String.valueOf(mScore),getBlockDistance(Court.COURT_WIDTH)+ 2*getRightMarginToCourt(), getBlockDistance(15),mPaint);
 	}
@@ -517,7 +519,7 @@ public class TetrisView extends View implements Runnable{
 	private void paintDeLine(Canvas canvas)
 	{
 		mPaint.setColor(Color.BLUE);
-		canvas.drawText("娑堝幓琛屾暟:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(17),mPaint);
+		canvas.drawText("消去行数:",getBlockDistance(Court.COURT_WIDTH)+getRightMarginToCourt(), getBlockDistance(17),mPaint);
 		mPaint.setColor(Color.RED);
 		canvas.drawText(String.valueOf(mDeLine),getBlockDistance(Court.COURT_WIDTH)+2*getRightMarginToCourt(), getBlockDistance(19),mPaint);
 	}
@@ -541,7 +543,7 @@ public class TetrisView extends View implements Runnable{
 	{
 		paintGame(canvas);
 		Paint paint = new Paint();
-		paint.setTextSize(40);
+		paint.setTextSize(40*SCALE);
 		paint.setAntiAlias(true);
 		paint.setARGB(0xe0,0xff,0x00,0x00);
 		canvas.drawText("Game Over",getBlockDistance(1),getBlockDistance(Court.COURT_HEIGHT/2-2),paint);
@@ -665,7 +667,7 @@ public class TetrisView extends View implements Runnable{
 		
 		try
 		{
-			FileOutputStream stream = mContext.openFileOutput(DATAFILE,Context.MODE_WORLD_WRITEABLE);
+			FileOutputStream stream = mContext.openFileOutput(DATAFILE,Context.MODE_PRIVATE);
 			pro.store(stream,"");
 			stream.close();
 		}

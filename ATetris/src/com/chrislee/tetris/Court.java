@@ -9,8 +9,8 @@ public class Court {
 	public final static int COURT_WIDTH  = 11;
 	public final static int COURT_HEIGHT = 23+4;
 	
-	public final static int BLOCK_WIDTH  = 20;
-	public final static int BLOCK_HEIGHT = 20;
+	public final static int BLOCK_WIDTH  = (int) (20*TetrisView.SCALE);
+	public final static int BLOCK_HEIGHT = (int) (20*TetrisView.SCALE);
 	
 	public final static int ABOVE_VISIBLE_TOP = 4;
 	

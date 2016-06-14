@@ -6,9 +6,12 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.AlertDialog.Builder;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Window;
+import android.view.WindowManager;
 
 public class ActivityGame extends Activity {
 
@@ -21,12 +24,20 @@ public class ActivityGame extends Activity {
 	{
 		super.onCreate(saved);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//È¥µôÐÅÏ¢À¸
 
 		init();
 	}
 	
 	private void init()
 	{
+		WindowManager windowManager = getWindowManager();    
+        Display display = windowManager.getDefaultDisplay(); 
+        Point outSize=new Point();
+        display.getSize(outSize);
+        TetrisView.SCREEN_WIDTH = outSize.x;
+        TetrisView.SCREEN_HEIGHT = outSize.y; 
+        
 		mTetrisView = new TetrisView(this);
 		Intent intent = getIntent();
 		int level = intent.getIntExtra(ActivityMain.LEVEL,1);
@@ -78,7 +89,7 @@ public class ActivityGame extends Activity {
 //		{
 //			Builder builder = new AlertDialog.Builder(this);
 //			builder.setIcon(R.drawable.icon);
-//			builder.setTitle("ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½");
+//			builder.setTitle("¹§Ï²½øÈëÇ°ÈýÃû");
 //			return builder.create();
 //		}
 //		return null;
