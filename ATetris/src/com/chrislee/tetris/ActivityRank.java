@@ -14,7 +14,7 @@ public class ActivityRank extends Activity {
 	public void onCreate(Bundle saved)
 	{
 		super.onCreate(saved);
-		setTitle("æ’è¡Œæ¦œ");
+		setTitle("ÅÅĞĞ°ñ");
 		setContentView(R.layout.rank);
 //		init();
 	}
